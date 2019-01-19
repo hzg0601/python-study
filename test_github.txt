@@ -1,2 +1,58 @@
-print('hello world')
-print('a little change')
+ssh-keygen -t rsa -C "hzg0601@163.com"
+SSH码保存路径-默认yes,
+passpharse-默认empty
+复制id_rse.pub中的秘匙
+在GitHub中的Settings中添加SSH keys,title任选
+
+ssh -T git@github.com检测是否成功绑定
+git config --global user.name "hzg0601"
+git config --global user.email "hzg0601@163.com"
+
+在Github上创建仓库python-study
+cd /C/Users/Administrator,定位复制仓库的位置，任意选择
+git clone https://github.com/hzg0601/python-study.git
+
+ls,查看所有文件
+
+在python-study内创建新的文件test_github.txt
+git add test_github.txt,添加到缓存区
+git add *
+
+git commit -m "添加描述"，添加到正式改动HEAD
+
+git push origin master 将改动提交到远端仓库，master可以改为任何分支
+
+git remote add origin <server>，没有克隆现有仓库，并将你的仓库连接到某个远端服务器
+
+git checkout -b feature_x,创建一个叫feature_x的分支
+git checkout master,切换回主分支
+git push origin feature_x,推送到远端仓库，除非推送否则不为他人可见
+git branch -d feature_x删除分支
+
+git push,更新本地仓库至最新改动，以在你的目录中fetch和merge远端的改动
+git merge <brach>合并其他分支到你当前的分支
+在这两种情况下，git都会尝试去自动合并改动，但可能出现conflicts，此时需要手动合并，并执行如下命令将它们标记为合并成功
+git add <file name>
+在合并改动之前，你可以使用如下命令预览差异：
+git diff <sourch_branch><target_branch>
+
+git tag 1.0.0 <提交ID的前10位字符>
+git log 获取提交ID，也可以使用少一点的ID前几位，只要是唯一的
+
+git checkout -<filename>,替换本地改动，回滚到HEAD中的最新内容替换掉你的工作目录中的文件，已添加到缓存区的改动和新文件都不会受到影响。
+git fetch origin ，丢弃在本地所有的改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它
+git fetch origin
+git reset -hard origin/master
+
+实用小贴士
+内建的图形化 git：
+gitk
+彩色的 git 输出：
+git config color.ui true
+显示历史记录时，每个提交的信息只显示一行：
+git config format.pretty oneline
+交互式添加文件到暂存区：
+git add -i
+
+
+
